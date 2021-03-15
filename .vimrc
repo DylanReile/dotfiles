@@ -48,6 +48,14 @@ set ignorecase smartcase
 set backspace=indent,eol,start
 
 " https://github.com/junegunn/vim-plug plugin manager
+" install vim-plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" vim-plug plugins
 call plug#begin()
   " fuzzy finder
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -94,7 +102,7 @@ let g:fzf_layout = { 'down': '~80%' }
 cnoreabbrev z FZF
 
 " variable for ag command with default switches
-let agCommand = 'ag --vimgrep --hidden --path-to-ignore ~/.agignore'
+let agCommand = 'ag --vimgrep --hidden --path-to-ignore ~/.agignore --ignore .git'
 
 " have ack.vim use ag for searching
 let g:ackprg = agCommand

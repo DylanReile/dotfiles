@@ -1,12 +1,14 @@
 alias gco='git checkout'
 alias gs='git status -s'
-alias ag='ag --hidden'
+alias ag='ag --hidden --ignore .git'
 alias wip='git add -A; git commit -m "wip"'
 alias undo='git reset --soft HEAD~1; git reset .'
 alias old='git branch -D old; git branch old'
 alias pry='pry-remote -w'
 alias :z='vim -c FZF'
 alias be='bundle exec'
+alias gbash='docker exec -it gorilla_web_1 bash'
+alias pbash='docker exec -it gorilla_db_1 bash'
 
 lc() { if test -d $1; then ls $1; else cat $1 | nl; fi }
 fr() { git grep --cached -Il '' |  xargs sed -i s/$1/$2/g; }

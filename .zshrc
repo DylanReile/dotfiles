@@ -1,3 +1,5 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 source ~/.alias
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -19,3 +21,6 @@ function git_branch() {
 
 setopt prompt_subst             # allow command substitution inside the prompt
 PROMPT='%~ $(git_branch) '     # set the prompt value
+
+source /usr/local/opt/chruby/share/chruby/auto.sh # switch ruby if needed
+source /usr/local/opt/chruby/share/chruby/chruby.sh
